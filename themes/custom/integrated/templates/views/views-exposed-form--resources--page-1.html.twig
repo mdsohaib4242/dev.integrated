@@ -1,0 +1,33 @@
+{#
+/**
+* @file
+* Theme override for a select element.
+*
+* Available variables:
+* - attributes: HTML attributes for the <select> tag.
+    * - options: The <option> element children.
+        *
+        * @see template_preprocess_select()
+        */
+        #}
+
+
+
+        <div class="breadcrum-bottom">
+            <div class="container-fluid p-2">
+                <div class="container">
+                    <div class="row e-filter">
+                        <div class="col-md-3">
+                            {{ form.title }}
+                        </div>
+                        <div class=" col-md-3">
+                            {{ form.field_category_target_id }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form.created }}
+                        </div>
+                        <span class="col-md-3">{{ form.actions }} </span>
+                    </div>
+                </div>
+            </div>
+        </div>

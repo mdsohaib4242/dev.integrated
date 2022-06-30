@@ -1,0 +1,91 @@
+{% set img_url = file_url(node.field_image.entity.uri.value) %}
+    <div class="container-fullwidth">
+        <div class="banner-background">
+            <div class="d-none d-lg-block">
+                <img class="img-fluid header-image" src="{{ img_url }}" alt="here" style="height: 255px;width: 1047px;">
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid py-5">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 order-lg-first">
+                <div class="post-info">
+                    <h5 class="underline">Post info</h5>
+                    <p>Reading time : {{ time }} min</p>
+                    <p>{{ content.field_category[0]['#title'] }}</p>
+                    <p>{{ date }}</p>
+                    <p>{{ node.getOwner.getDisplayName }}</p>
+                </div>
+                <div class="share-post pt-3">
+                    <h5 class="underline">Share this post</h5>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.current_page_url }}&title=TITLE&source=COMPANY" class="social share-button post" data-network="linkedin">
+                        <i class="fa fa-user"></i>
+                        <span>Post</span>
+                    </a>
+                    <a href="https://twitter.com/share?url={{ page.current_page_url }}&text=TITLE" class="share-button tweet social" data-network="twitter">
+                        <i class="fa fa-user"></i>
+                        <span>Tweet</span>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.current_page_url }}&t=TITLE" class="share-button share social" data-network="facebook">
+                        <i class="fa fa-user"></i>
+                        <span>Share</span>
+                    </a>
+                    <a href="#" class="share-button subscribe">
+                        <i class="fa fa-user"></i>
+                        <span>Subscribe</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-first pb-3 blog-content">
+                <img class="img-fluid header-image d-block d-lg-none mb-3" 
+                src="{{ img_url }}" alt="here">
+                <h4 class="blog-title">{{ label }} </h4>
+                <p class="blog-description"> {{ content.body }} </p>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="post-info">
+                    <h5 class="underline">Search</h5>
+                    <div class="search-box">
+                        <input type="text" class="input-search" placeholder="Search by keyword">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+                <div class="category pt-3">
+                    <h5 class="underline">Categories</h5>
+                    <div>
+                        {# {{ kint(categories)}} #}
+                        {% for category in categories %}
+                        <a href="{{ category.link }}" class="#">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="conatainer-fullwidth">
+        <div class="row">
+            <div class="col-md-6 p-lg-0">
+                <div class="overlay-box" id="overlay-image-1" style="background-image: url({{ prev_node.image|striptags|trim }});">
+                    <a href="{{ prev_node.link|striptags|trim }}" class="overlay-navigation">
+                        <i class="fa-solid fa-angle-left"></i>
+                        <span>Previous</span>
+                    </a>
+                    <p class="description">{{ prev_node.title }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 p-lg-0">
+                <div class="overlay-box" id="overlay-image-2" style="background-image: url({{ next_node.image|striptags|trim }});">
+                    <a href="{{ next_node.link|striptags|trim }}" class="overlay-navigation">
+                        <span>Next</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                    <p class="description">{{ next_node.title }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    

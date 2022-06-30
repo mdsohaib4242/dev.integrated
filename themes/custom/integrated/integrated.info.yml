@@ -1,0 +1,16 @@
+type: theme
+base theme: stable
+core_version_requirement: ^8.8 || ^9
+
+name: 'Integrated language'
+description: 'Custom theme for Integrated language.'
+package: 'Integrated_language'
+
+regions:
+ page_title: Page title
+ breadcrumbs: Breadcrumbs
+ tool_bar: Tool Bar
+ content: Content
+ 
+libraries:
+  - integrated/main-library

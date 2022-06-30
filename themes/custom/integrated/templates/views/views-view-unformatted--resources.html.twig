@@ -1,0 +1,16 @@
+
+<div class="container-fluid">
+    {% if title %}
+        <div class="resources-section-heading">
+            <h4 class="topic-highlighter-left">{{ heading }}</h4>
+            <div class="outline-btn-green-wrap">
+                <a href="{{ headingurl }}" class="outline-btn-green">View all {{ heading }} </a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        {% for row in rows %}
+            {{- row.content -}}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<section class="maincontent">
+    <div class="container">
+        {# <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <div class="row innerrow">
+                    <div class="col-sm-4 dropdown">
+                       <div class="voice-dropdown">
+                           <select class="form-select">
+                               <option selected>Category</option>
+                               <option value="1">Audiobook</option>
+                               <option value="2">Commercial</option>
+                               <option value="3">Corporate</option>
+                           </select>
+                       </div>
+                    </div>
+
+                    <div class="col-sm-4 dropdown">
+                        <div class="voice-dropdown">
+                            <select class="form-select">
+                               <option selected>Gender</option>
+                               <option value="1">Male</option>
+                               <option value="2">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 dropdown">
+                        <div class="voice-dropdown">
+                           <select class="form-select">
+                               <option selected>Languages</option>
+                               <option value="1">English</option>
+                               <option value="2">Hindi</option>
+                               <option value="3">German</option>
+                               <option value="3">French</option>
+                               <option value="3">Dutch</option>
+                           </select>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div> #}
+
+        <div class="voice-table">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="voice-tr">
+                        <th>Play</th>
+                        <th>Voice ID</th>
+                        <th >Category</th>
+                        <th>Gender</th>
+                        <th>Language</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr class="voice-tr">
+                        <td class="voice-td">
+                            <div class="playaudio-wrap">
+                                <div class="playaudio">
+                                    <audio>
+                                        <source src="{{ file_url(row.content['#row']._entity.field_media.entity.uri.value) }}">
+                                        </source>
+                                    </audio>
+                                </div>
+                                <i class="fa fa-play show-audio" aria-hidden="true"></i>
+                                <div class="audio-container">
+                                    <div class="content">
+                                        <i class="fa fa-play play-audio" aria-hidden="true"></i>
+                                        <i class="fa-solid fa-pause pause-audio"></i>
+                                        <img src="/themes/custom/integrated/audio/YdBO.gif" alt="" class="playing-image">
+                                        <i class="fa fa-times close-audio" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</td>
+                        <td>{{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_category }}'] }}</td>
+                        <td>{{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_gender }}'] }}</td>
+                        <td>{{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_language }}'] }}</td>
+                        <td  class="voice-td">
+                            <a href="{{ file_url(row.content['#row']._entity.field_media.entity.uri.value) }}" target="_blank" download="download" class="down_aud">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  
+
+                   
+                </tbody>
+            </table>
+        </div>
+        <section class="highlightedbox col-sm-10 mx-auto">Please <a
+                href="https://www.integratedlanguages.com/contact-us/">contact us</a> to learn about the rates or any other
+            language for voice over.
+        </section>
+    </div>
+    </div>
+</section>

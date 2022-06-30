@@ -1,0 +1,18 @@
+<section class="pt-5 pb-3">
+    <div class="firm-content">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="image-wrap">
+                    <img src="{{ content.field_image.0 }}" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-6 p-4">
+                <h3>{{ content.field_title }}</h3>
+                <p class="pb-3">{{ content.field_body.0 }}</p>
+                <a href="{{paragraph.field_link.get(0).getUrl().toString()}}" class="hollow-btn">
+                    <span>{{paragraph.field_link.title}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

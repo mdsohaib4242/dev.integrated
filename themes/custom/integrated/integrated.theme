@@ -1,0 +1,269 @@
+<?php
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute; 
+function integrated_theme($existing, $type, $theme, $path) {
+    return [
+      'views_exposed_form__voice_over__page_1' => [
+        'render element' => 'form',
+      ],
+    ];
+  }
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function integrated_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) { 
+  if($form['#id'] == 'views-exposed-form-voice-over-page-1') {
+    $form['actions']['reset']['#access']=true;
+    $form['field_category_target_id']['#options']['All']=Category;
+    $form['field_gender_target_id']['#options']['All']=Gender;
+    $form['field_language_target_id']['#options']['All']=Language;
+
+    if($form['#id'] == 'views-exposed-form-resources-page-1') {
+      $form['actions']['reset']['#access']=true;
+  }
+  // dump($form);
+}
+}
+
+
+
+function integrated_preprocess_page(&$variables) {
+  // dd($variables);
+    if (isset($variables['node'])) {
+      $node = $variables['node'];
+      $variables['page']['type'] = $node->bundle();
+      if($node->bundle() == 'page') {
+        $nid = $node->id();
+        // dd($nid);
+          $node_image = $node->field_image->entity;
+          if($node_image) {
+            // dd($node_image);
+              $node_images = $node_image->getFileUri();
+              $variables['page']['image_in_page'] = file_create_url($node_images);
+          }
+      }
+      // $variables['page']['image_in_page'] = file_create_url($node->field_image->entity->getFileUri());
+    }
+
+    $current_url = \Drupal\Core\Url::fromRoute('<current>');
+    $path = $current_url->toString();
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    // dump($path);
+    // dump($host);.
+    $main_url = $host.''.$path;
+    $variables['page']['current_page_url'] = $main_url;
+    // dump($variables['page']['current_page_url']);
+  }
+
+  function integrated_preprocess_breadcrumb(&$variables) {
+    if ($variables['breadcrumb']) {
+      $request = \Drupal::request();
+      $route_match = \Drupal::routeMatch();
+      $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+      
+      if (!empty($page_title)) {
+        $variables['breadcrumb'][] = [
+          'text' => $page_title,
+          'attributes' => new Attribute(['class' => ['active']])
+        ]; 
+      }
+      $variables['#cache']['contexts'][] = 'url';
+    }
+    // dump($page_title);
+  }
+
+  /**
+ * Implements hook_form_alter().
+ */
+
+    
+function integrated_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_pass' || $form_id == 'user_login_form' || $form_id == 'user_register_form') {
+    $form['#prefix'] = '<div class="user-form-wrapper container">';
+    $form['#suffix'] = '</div>';
+    // dump($form);
+  }
+
+}
+
+function integrated_preprocess_views_view_unformatted(&$variables) {
+  // dd($variables);
+
+  // $mylink = \Drupal\Core\Url::fromUri($node->field_image[0]->uri);
+  // $mylink->toString();
+  // dump($mylink);
+  // $node->field_image->uri();
+  // dump($node);
+
+  // $url = $node->field_view_node[$node->language][0]['url'];
+  // dump($url);
+  
+
+
+  $title = $variables['title'];
+  if(gettype($title) != 'string') {
+    $link = $title->__toString();
+  }
+  else {
+    $link = $title;
+  }
+  preg_match_all('/<a[^>]+href=([\'"])(?<href>.+?)\1[^>]*>/i', $link, $result);
+
+  if (!empty($result)) {
+    $headingurl = ($result['href'][0]);
+
+    $dom = new DOMDocument;
+    $dom->loadHTML($title);
+    // echo $dom->getElementsByTagName('a')->nodeValue;
+    foreach ($dom->getElementsByTagName('a') as $node)
+    {
+      $heading = $node->nodeValue;
+    }
+  }
+    // dd();
+    $variables['heading'] = $heading;
+    $variables['headingurl'] = $headingurl;
+
+    
+
+
+}
+
+function integrated_preprocess_node(&$variables){
+  
+  $node= $variables['node'];
+  $node_id = $variables['node']->id();
+  $node_type = $variables['node']->bundle();
+  $nids = \Drupal::entityQuery('node')->condition('type',$node_type)->execute();
+ 
+
+  $count = 0;
+  $prev = 0;
+  $next = 0;
+  $new_nids = [];
+  foreach($nids as $nid) {
+    $new_nids[] = $nid;
+  }
+  // dd($new_nids);
+
+  $length = count($new_nids);
+  foreach($new_nids as $nid) {
+
+    
+    // dump($nid);
+    // echo "<br>";
+    // dump($nids[intval($length) - 1]);
+    // echo "<br>";
+    if($node_id == $nid) {
+      if($count == 0) {
+        $prev = $new_nids[intval($length) - 1];
+        $next = $new_nids[$count + 1];
+      }
+      else if($count == intval($length) - 1) {
+        $prev = $new_nids[$count - 1];
+        $next = $new_nids[0];
+      }
+      else {
+        $prev = $new_nids[$count - 1];
+        $next = $new_nids[$count + 1];
+      }
+    }
+    $count++;
+  }
+  $prev_node =  \Drupal\node\Entity\Node::load($prev);
+  $nxt_node =  \Drupal\node\Entity\Node::load($next);
+
+  $nxt_title = $nxt_node->getTitle();
+  $prev_title = $prev_node->getTitle();
+
+  if($prev_node) {
+    $node_image = $prev_node->field_image->entity;
+    if($node_image) {
+          $node_images = $node_image->getFileUri();
+          $variables['prev_node']['image'] = file_create_url($node_images);
+      }  
+    $variables['prev_node']['title'] = $prev_node->get('title')->value;
+    $prev_url = \Drupal\Core\Url::fromUserInput('/' .'node/'.$prev_node->id(),  array('absolute' => 'true'))->toString();
+    $variables['prev_node']['link'] = $prev_url;
+  }
+  
+  if($nxt_node){
+    $node_image = $nxt_node->field_image->entity;
+    if($node_image) {
+        $node_images = $node_image->getFileUri();
+        $variables['next_node']['image'] = file_create_url($node_images);
+      }
+    $variables['next_node']['title'] = $nxt_node->get('title')->value;
+    $next_url = \Drupal\Core\Url::fromUserInput('/' .'node/'.$nxt_node->id(),  array('absolute' => 'true'))->toString();
+    $variables['next_node']['link'] = $next_url;
+  }
+
+
+
+
+  $vid = 'categories';
+  $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+  foreach ($terms as $term) {
+    $url = \Drupal\Core\Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $term->tid]);
+   $term_data[] = array(
+    'id' => $term->tid,
+    'name' => $term->name,
+    'link' => base_path().'taxonomy/term/'.$term->tid
+   );
+  }
+  $variables['categories'] = $term_data;
+  // dump($term_data);
+
+
+  // calculating reading time for node
+  $word= $node->get('body')->getValue()[0]['value'];
+  $count =  str_word_count($word);
+  $time = ceil($count/200);
+
+  $variables['time'] = $time;
+  // dump($time);
+  // dump($node->get('body')->getValue()[0]['value']);
+
+}
+
+function integrated_preprocess_views_view(&$variables) {
+  // dd($variables);
+  $title = $variables['title'];
+  if(gettype($title) != 'string') {
+    $link = $title->__toString();
+  }
+  else {
+    $link = $title;
+  }
+  preg_match_all('/<a[^>]+href=([\'"])(?<href>.+?)\1[^>]*>/i', $link, $result);
+
+  if (!empty($result)) {
+    $headingurl = ($result['href'][0]);
+
+    $dom = new DOMDocument;
+    $dom->loadHTML($title);
+    // echo $dom->getElementsByTagName('a')->nodeValue;
+    foreach ($dom->getElementsByTagName('a') as $node)
+    {
+      $heading = $node->nodeValue;
+    }
+  }
+    // dd();
+    // $variables['heading'] = $heading;
+    // $variables['headingurl'] = $headingurl;
+}
+
+
+
+// function integrated_preprocess_views_view_fields(&$variables) {
+//   dd($variables);
+// }
+
+
+function integrated_preprocess_field(&$variables) {
+    
+  foreach($variables['items'] as $idx => $item) {
+     $variables['items'][$idx]['content']['#paragraph']->index = $idx;
+   }
+ 
+}

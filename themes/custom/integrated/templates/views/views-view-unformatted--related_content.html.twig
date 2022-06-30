@@ -1,0 +1,27 @@
+<div class="row pb-3">
+    <div class="owl-two owl-carousel owl-theme related-news-crousel">
+        {% for row in rows %}
+       
+        <div class="item">
+            <div class="resources-content-box blog">
+                
+                <a href="{{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ view_node_1 }}']|striptags('<!-- -->') }}" class="resources-image-box">
+                    <img src=" {{file_url(row.content['#row']._entity.field_image.entity.uri.value)}} " class="resources-card-image">
+                </a>
+                <div class="resources-card-content">
+                    <a href="#">
+                        <h6> {{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_category }}'] }}
+                        </h6>
+                    </a>
+                    <p>
+                        {# {{row.content['#row']._entity.body.value|striptags|render|trim}} #}
+                        {% set text = row.content['#row']._entity.body.value|striptags|render|trim %}
+                        {{ text|length > 160 ? text|slice(0, 160) ~ '...' : text }}
+                    </p>
+                    {{ row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ view_node }}'] }} <i class="fa-solid fa-circle-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

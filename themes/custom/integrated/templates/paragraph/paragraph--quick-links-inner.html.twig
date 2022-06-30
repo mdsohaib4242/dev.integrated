@@ -1,0 +1,11 @@
+<div class="col-lg-4 link-content-wrap">
+    <div class="link-content">
+        <div class="link-content-overlay">
+            <h6>{{content.field_body}}</h6>
+        </div>
+        <img src="{{ content.field_image.0 }}" class="img-fluid">
+        <a href="{{paragraph.field_link.get(0).getUrl().toString()}}">
+            <h4> {{paragraph.field_link.title}} <i class="fa-solid fa-angle-right"></i></h4>
+        </a>
+    </div>
+</div>

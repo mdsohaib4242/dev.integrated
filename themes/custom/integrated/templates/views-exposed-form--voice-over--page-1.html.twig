@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+#}
+<div class="container">
+<div class="row">
+    <div class="col-sm-8 mx-auto">
+        <div class="row innerrow">
+            <div class="col-sm-3 dropdown">
+               <div class="voice-dropdown">
+                   {# <select class="form-select">
+                       <option selected>{{ form.field_category_target_id }}</option>
+                       <option value="1">Audiobook</option>
+                       <option value="2">Commercial</option>
+                       <option value="3">Corporate</option>
+                   </select> #}
+                   {{ form.field_category_target_id }}
+               </div>
+            </div>
+
+            <div class="col-sm-3 dropdown">
+                <div class="voice-dropdown">
+                    {# <select class="form-select">
+                       <option selected>{{ form.field_gender_target_id }}</option>
+                       <option value="1">Male</option>
+                       <option value="2">Female</option>
+                    </select> #}
+                    {{ form.field_gender_target_id }}
+                </div>
+            </div>
+
+            <div class="col-sm-3 dropdown">
+                <div class="voice-dropdown">
+                   {# <select class="form-select">
+                       <option selected>{{ form.field_language_target_id }}</option>
+                       <option value="1">English</option>
+                       <option value="2">Hindi</option>
+                       <option value="3">German</option>
+                       <option value="3">French</option>
+                       <option value="3">Dutch</option>
+                   </select> #}
+                   {{ form.field_language_target_id }}
+               </div>
+            </div>
+           <div class="col-sm-3 expose-btn" >{{ form.actions }}</div> 
+        </div>
+    </div>
+</div>
+</div>

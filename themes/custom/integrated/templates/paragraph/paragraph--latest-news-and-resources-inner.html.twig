@@ -1,0 +1,33 @@
+
+{% if paragraph.index == 0 %}
+<div class="col-lg-6">
+    <div class="news-img style="background-image":url('{{content.field_image.0}}')">
+        <div class="blog-head">
+            {# <a href="{{content.field_link}}"> #}
+            <h4>{{content.field_title_}}</h4>
+        {# </a> #}
+        </div>
+        <h6>{{content.field_body}}</h6>
+    </div>
+</div>
+{% elseif paragraph.index == 1 %}
+<div class="col-lg-6">
+    <div class="blog-img blog-img1 style="background-image":url('{{content.field_image.0}}')">
+        <div class="blog-head" id="blog-head-wrap">
+            {# <a href="{{content.field_link}}"> #}
+            <h4>{{content.field_title_}}</h4>
+        {# </a> #}
+        </div>
+        <h6>{{content.field_body}}</h6>
+    </div>
+{% else %}
+    <div class="blog-img  blog-img2 style="background-image":url('{{content.field_image.0}}')">
+        <div class="blog-head" id="blog-head-wrap">
+            {# <a href="{{content.field_link}}"> #}
+            <h4>{{content.field_title_}}</h4>
+        {# </a> #}
+        </div>
+        <h6>{{content.field_body}}</h6>
+    </div>
+</div>
+{% endif %}
