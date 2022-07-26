@@ -21,9 +21,13 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/core-vendor-hardening": "^9.3",
+        "drupal/devel": "^4.1",
         "drupal/paragraphs": "^1.14",
+        "drupal/pathauto": "^1.10",
         "drupal/viewsreference": "^2.0@beta",
-        "drush/drush": "^11.0"
+        "drupal/webform": "^6.0",
+        "drush/drush": "^11.0",
+        "kint-php/kint": "^4.1"
     },
     "conflict": {
         "drupal/drupal": "*"

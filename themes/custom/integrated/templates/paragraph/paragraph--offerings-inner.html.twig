@@ -1,0 +1,60 @@
+{# 
+    <div class="col-lg-6 mt-3">
+        <div class="offering-content-left" id="offering-content1">
+            <h5>{{content.field_title_}}</h5>
+            <p>{{content.field_body}}</p>
+        </div>
+
+    </div>
+    <div class="col-lg-6 mt-3">
+        <div class="row h-100">
+            <div class="col-sm-6">
+                <div class="offering-img-wrap">
+                    <img src="{{content.field_image.0}}" class="img-fluid m-auto" id="offering-img1">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="h-100">
+                    <table class="h-100 offering-title">
+                        <tr id="offering-title1">
+                            <th>01</th>
+                            <th>{{content.field_title_}}</th>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+        </div>
+    </div> #}
+
+    {# <div class="col-lg-6 mt-3">
+        
+        <div class="offering-content-left" id="offering-content{{ paragraph.index + 1 }}">
+            <h5>{{content.field_title_}}</h5>
+            <p>{{content.field_body}}</p>
+        </div>
+    </div>
+    <div class="col-lg-6 mt-3">
+        <div class="row h-100">
+            <div class="col-sm-6">
+                <div class="offering-img-wrap">
+                    
+                    <img src="{{content.field_image.0}}" class="img-fluid m-auto" id="offering-img{{ paragraph.index + 1 }}">  
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="h-100">
+                    <table class="h-100 offering-title">
+                        <tr id="offering-title{{ paragraph.index + 1 }}">
+                            <th>01</th>
+                            <th>{{content.field_title_}}</th>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+        </div>
+    </div> #}
+
+    <div class="offering-img-wrap">
+                    
+        <img src="{{content.field_image.0}}" class="img-fluid m-auto" id="offering-img{{ paragraph.index  }}">  
+    </div>

@@ -1,0 +1,19 @@
+<section class="overview">
+    <div class="container-fluid">
+        <h4 class="topic-highlighter text-center">{{ content.field_title_ }}</h4>
+        <h6 class="text-center pb-3">{{ content.field_short_body }}</h6>
+        <div class="row">
+            <div class="col-lg-6 py-5 order-lg-first order-last">
+                <p>{{ content.field_body }}</p>
+                <div class="border-button">
+                    <a href="{{paragraph.field_link.get(0).getUrl().toString()}}"> {{paragraph.field_link.title}} <i class="fa-solid fa-right-long"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="overview-top-right">
+                    <img src="{{ content.field_image.0 }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

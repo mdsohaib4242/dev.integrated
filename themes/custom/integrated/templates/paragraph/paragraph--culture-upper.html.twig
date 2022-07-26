@@ -1,0 +1,37 @@
+{% if paragraph.index == 0 %}
+<div class="col-lg-6">
+    <div class="culture-img">
+        <div class="culture-img-overlay culture-img-overlay-wrap">
+            <p>{{ content.field_body }}</p>
+        </div>
+        <img src="{{ content.field_image.0 }}">
+        <div class="culture-img-content">
+            <img src="{{ content.field_inner_image.0 }}">
+            <h6>{{ content.field_title_ }}</h6>
+        </div>
+    </div>
+</div>
+{% elseif paragraph.index == 1 %}
+<div class="col-lg-6 culture-wrap">
+    <div class="culture-img">
+        <div class="culture-img-overlay">
+            <p>{{ content.field_body }}</p>
+        </div>
+        <img src="{{ content.field_image.0 }}">
+        <div class="culture-img-content">
+            <img src="{{ content.field_inner_image.0 }}">
+            <h6>{{ content.field_title_ }}</h6>
+        </div>
+    </div>
+    <div class="culture-img">
+        <div class="culture-img-overlay">
+            <p>{{ content.field_body }}</p>
+        </div>
+        <img src="{{ content.field_image.0 }}">
+        <div class="culture-img-content">
+            <img src="{{ content.field_inner_image.0 }}">
+            <h6>{{ content.field_title_ }}</h6>
+        </div>
+    </div>
+</div>
+{% endif %}

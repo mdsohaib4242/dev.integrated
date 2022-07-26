@@ -47,12 +47,12 @@
 						</a>
 					</li>
 					<li class="menu-link-1">
-						<a href="./our-firm.php">
+						<a href="./our-firm">
 							<span>OUR FIRM</span>
 						</a>
 					</li>
 					<li class="menu-link-1 has-menu">
-						<a href="#">
+						<a href="./translation">
 							<span>SERVICES</span>
 						</a>
 						<div class="menu-level-2">
@@ -62,7 +62,7 @@
 							</div>
 							<div class="row">
 								<div class="col-4">
-									<a href="./services.php">
+									<a href="./translation">
 										<div class="menu-link-2 service"></div>
 									</a>
 								</div>
@@ -404,12 +404,12 @@
 						</div>
 					</li>
 					<li class="menu-link-1">
-						<a href="./language.php">
+						<a href="./language">
 							<span>LANGUAGES</span>
 						</a>
 					</li>
 					<li class="menu-link-1">
-						<a href="./industry.php">
+						<a href="./industries">
 							<span>INDUSTRIES</span>
 						</a>
 					</li>
@@ -462,7 +462,7 @@
 								</div>
 								<div class="col-4">
 									<div class="menu-link-2">
-										<a href="{{ base_path }}Language-Learning">
+										<a href="{{ base_path }}language-learning">
 											<span class="menu-link-title">Language Learning</span>
 											<i class="fa-solid fa-angle-right"></i>
 										</a>
@@ -472,7 +472,7 @@
 						</div>
 					</li>
 					<li class="menu-link-1">
-						<a href="./contact-us.php">
+						<a href="./contact-us">
 							<span>CONTACT US</span>
 						</a>
 					</li>
@@ -497,7 +497,7 @@
 					<div class="offcanvas-body menu-small-wrap">
 						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 							<li class="nav-item">
-								<a class="nav-link menu-small-link" aria-current="page" href="#">OUR FIRM</a>
+								<a class="nav-link menu-small-link" aria-current="page" href="./our-firm">OUR FIRM</a>
 							</li>
 							<li class="menu-small has-menu">
 								<a class="nav-link menu-small-link" href="#">
@@ -727,10 +727,10 @@
 								</div>
 							</li>
 							<li class="menu-small">
-								<a class="nav-link menu-small-link" href="#">LANGUAGES</a>
+								<a class="nav-link menu-small-link" href="/language">LANGUAGES</a>
 							</li>
 							<li>
-								<a class="nav-link menu-small-link" href="#">INDUSTRIES</a>
+								<a class="nav-link menu-small-link" href="/industries">INDUSTRIES</a>
 							</li>
 							<li class="menu-small has-menu">
 								<a class="nav-link menu-small-link" href="#">RESOURCES</a>
@@ -748,12 +748,12 @@
 										<a class="nav-link" href="{{ base_path }}case-studies">CASE STUDIES</a>
 									</div>
 									<div class="link-small-2">
-										<a class="nav-link" href="{{ base_path }}Language-Learning">LANGUAGE LEARNING</a>
+										<a class="nav-link" href="{{ base_path }}language-learning">LANGUAGE LEARNING</a>
 									</div>
 								</div>
 							</li>
 							<li>
-								<a class="nav-link menu-small-link" href="#">INDUSTRIES</a>
+								<a class="nav-link menu-small-link" href="/industries">INDUSTRIES</a>
 							</li>
 						</ul>
 					</div>
@@ -780,7 +780,7 @@
 		</div>
 	</section> #}
 
-	{% if node.id == 19 %}
+	{# {% if node.id == 19 %}
 	{% if page.page_title %}
 	<section class="top-banner-simple">
 		<div class="top-banner-simple-content">
@@ -791,7 +791,9 @@
 		</div>
 	</section>
 	{% endif %}
-	{% elseif page.type == 'page' or page.type == 'article'%}
+	{% elseif page.type == 'page' or page.type == 'article'%} #}
+	{# {% if node.id == 6 or node.id == 21 or node.id == 22 or node.id == 23 or node.id == 24 or node.id == 25 or node.id == 26%} #}
+	{% if  node.id != 4 %}
 	<section class="top-banner">
 		<div class="row">
 			<div class="col-8">
@@ -807,6 +809,7 @@
 		</div>
 	</section>
 	{% endif %}
+	{# {% endif %} #}
 	
 	
 	{% if page.breadcrumbs %}
@@ -859,7 +862,7 @@
 				<div class="col-lg-6">
 					<div class="footer-top-left">
 						<h4 class="pb-3"><span>Let's create something amazing</span><span class="footer-top-left-line-break"> together!</span></h4>
-						<h6><a href="#"> Contact Us <i class="fa-solid fa-angle-right"></i></a></h6>
+						<h6><a href="/contact-us"> Contact Us <i class="fa-solid fa-angle-right"></i></a></h6>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -896,7 +899,7 @@
 				<a href="#"><i class="fa-solid fa-arrow-up"></i></a>
 			</div>
 			<div class="footer-icon-bottom">
-				<a href="#"><img src="/themes/custom/integrated/img/footer-logo.png"></a>
+				<a href="#"><img src="/ng/integrated/themes/custom/integrated/img/footer.png"></a>
 			</div>
 		</div>
 

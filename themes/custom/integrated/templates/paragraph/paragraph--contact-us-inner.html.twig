@@ -1,0 +1,23 @@
+<div class="col-sm-6">
+    <div class="contact-us-card">
+        <div>
+            <img src="{{ content.field_image.0 }}">
+        </div>
+        <div class="contact-us-card-content">
+            <h4>{{ content.field_title_ }}</h4>
+            <p>{{ content.field_short_body }}</p>
+            <div>
+                <span><i class="fa-solid fa-location-dot"></i></span>
+                <p> {{ content.field_location }}</p>
+            </div>
+            <div>
+                <span><i class="fa-solid fa-phone"></i> </span>
+                <p>{{ content.field_phone_number }}</p>
+            </div>
+            <div>
+                <span><i class="fa-solid fa-envelope"></i></span>
+                <p> {{ content.field_email.0 }}</p>
+            </div>
+        </div>
+    </div>
+</div>

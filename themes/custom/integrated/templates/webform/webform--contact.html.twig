@@ -1,0 +1,40 @@
+<form {{ attributes }}>
+    {{  title_prefix }}
+<div class="row">
+    <div class="col-sm-6">
+        {{ element.elements.name }}
+    </div>
+    <div class="col-sm-6">
+        {{ element.elements.last_name }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        {{ element.elements.email }}
+    </div>
+    <div class="col-sm-6">
+        {{ element.elements.phone_number }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        {{ element.elements.subject }}
+    </div>
+    <div class="col-sm-4">
+        {{ element.elements.company }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{ element.elements.your_message }}
+    </div>
+</div>
+<div class="text-center py-3">
+    {# <div class="explore-btn"> #}
+        {{ element.form_build_id }}
+        {{ element.form_token }}
+        {{ element.form_id }}
+        {{ element.elements.actions }}
+    {# </div> #}
+</div>
+</form>

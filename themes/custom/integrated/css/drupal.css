@@ -165,6 +165,9 @@ section h3 {
 .explore-btn:hover {
 	color: #fff;
 }
+#edit-actions-submit:hover {
+	color: #fff;
+}
 
 .explore-btn-wrap {
 	filter: drop-shadow(0px 8px 0 #ccc);
@@ -1894,7 +1897,7 @@ th {
 
 .contact-us-input {
 	padding: 1rem 0;
-}
+} 
 
 .contact-us-input input {
 	width: 100%;
@@ -2465,6 +2468,23 @@ th {
 	}
 }
 
+@media only screen and (max-width:1200px){
+	#edit-actions-submit{
+		font-size: 15px !important;
+	}
+}
+@media only screen and (max-width:768px){
+	#edit-actions-submit{
+		width: 40% !important;
+	}
+}
+@media only screen and (max-width:500px){
+	#edit-actions-submit{
+		line-height: 40px !important;
+		font-size: 12px !important;
+	}
+}
+
 @media only screen and (max-width: 426px) {
 	.footer-top-left {
 		background-color: var(--green-secondary);
@@ -2612,6 +2632,12 @@ th {
 		text-decoration: none;
 		font-size: 20px;
 	}
+	/* #edit-actions-submit {
+		padding: 10px 60px;
+		text-decoration: none;
+		font-size: 20px;
+		width: auto !important;
+	} */
 
 	.translation-top {
 		padding: 1rem 2rem;
@@ -2686,6 +2712,12 @@ th {
 
 }
 
+@media only screen and (max-width:376px){
+	#edit-actions-submit{
+		width: 50% !important;
+	}
+}
+
 
 @media only screen and (max-width: 321px) {
 	.top-banner-right {
@@ -2736,6 +2768,10 @@ th {
 	.history-bottom-content ul li {
 	    padding: 0.1rem;
 	    font-size: 8px;
+	}
+	#edit-actions-submit{
+		width: 55% !important;
+		font-size: 11px !important;
 	}
 }
 
@@ -2984,4 +3020,44 @@ top: 23px;
 #edit-submit-resources{
 	position: relative;
 	top: 25px;
+}
+.qa-steps{
+	position: relative;
+}
+.qa-steps1{
+	position: absolute;
+	right: 46%;
+	top: 9%;
+}
+.qa-steps2{
+	position: absolute;
+	bottom: 49%;
+	left: 87%;
+}
+.qa-steps3{
+	position: absolute;
+	bottom: 9%;
+	left: 48%;
+}
+.qa-steps4{
+	position: absolute;
+	bottom: 49%;
+	left: 9%;
+}
+
+#edit-actions-submit{
+	clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+	background: linear-gradient(#2F6403, #6C9F40);
+	color: #fff;
+	display: inline;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 18px;
+	font-family: 'poppins';
+	line-height: 50px;
+	width: 30%;
+}
+
+.contact-us-mid-bottom-left div p{
+	padding: 0.5rem 0;
 }

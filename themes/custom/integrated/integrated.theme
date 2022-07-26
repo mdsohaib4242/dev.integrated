@@ -1,6 +1,6 @@
 <?php
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Template\Attribute; 
+use Drupal\Core\Template\Attribute;  
 function integrated_theme($existing, $type, $theme, $path) {
     return [
       'views_exposed_form__voice_over__page_1' => [
@@ -14,9 +14,9 @@ function integrated_theme($existing, $type, $theme, $path) {
 function integrated_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) { 
   if($form['#id'] == 'views-exposed-form-voice-over-page-1') {
     $form['actions']['reset']['#access']=true;
-    $form['field_category_target_id']['#options']['All']=Category;
-    $form['field_gender_target_id']['#options']['All']=Gender;
-    $form['field_language_target_id']['#options']['All']=Language;
+    // $form['field_category_target_id']['#options']['All']=Category;
+    // $form['field_gender_target_id']['#options']['All']=Gender;
+    // $form['field_language_target_id']['#options']['All']=Language;
 
     if($form['#id'] == 'views-exposed-form-resources-page-1') {
       $form['actions']['reset']['#access']=true;
@@ -32,7 +32,7 @@ function integrated_preprocess_page(&$variables) {
     if (isset($variables['node'])) {
       $node = $variables['node'];
       $variables['page']['type'] = $node->bundle();
-      if($node->bundle() == 'page') {
+      if($node->bundle() == 'page' || $node->bundle() == 'our_services') {
         $nid = $node->id();
         // dd($nid);
           $node_image = $node->field_image->entity;
@@ -216,11 +216,13 @@ function integrated_preprocess_node(&$variables){
 
 
   // calculating reading time for node
-  $word= $node->get('body')->getValue()[0]['value'];
-  $count =  str_word_count($word);
-  $time = ceil($count/200);
+  // if (!empty($node->get('body'))) {
+  // $word= $node->get('body')->getValue()[0]['value'];
+  // $count =  str_word_count($word);
+  // $time = ceil($count/200);
 
-  $variables['time'] = $time;
+  // $variables['time'] = $time;
+  // }
   // dump($time);
   // dump($node->get('body')->getValue()[0]['value']);
 
@@ -263,7 +265,17 @@ function integrated_preprocess_views_view(&$variables) {
 function integrated_preprocess_field(&$variables) {
     
   foreach($variables['items'] as $idx => $item) {
+    if (isset($variables['items'][$idx]['content']['#paragraph']))
      $variables['items'][$idx]['content']['#paragraph']->index = $idx;
    }
- 
+  //  $field_name = $variables['field_title_']; 
+//  dd($field_name);
+
+
+// $paragraph = Paragraph::load($target_id);
+// $foo = $paragraph->field_name->value;
 }
+
+// function integrated_preprocess_webform(&$variables) {
+//   dd($variables);
+// }

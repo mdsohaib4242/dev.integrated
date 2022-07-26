@@ -1,0 +1,37 @@
+<section class="localization-services-accordion">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="service-accordion-title">
+                    <ul>
+                         {# {{ kint(content.field_localization_inner) }}  #}
+                        {% for key,var in content.field_localization_inner %}
+                        {% if key matches '/^\\d+$/' %}
+                        <li id="title{{ key }}">{{ var['#paragraph'].field_title_.0.value }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                {% for key,var in content.field_localization_inner %}
+                    {% if key matches '/^\\d+$/' %}
+                        <div class="service-accordion-content" id="content{{ key }}">
+                            {% set accordion_body = var['#paragraph'].field_body_.value %}
+                            {%  if accordion_body|length == 0 %}
+                            {% set accordion_body = ' ' %}
+                            {%  endif %}
+                            {% set body = {
+                                '#type':   'processed_text',
+                                '#text':    accordion_body,
+                                '#format':  var['#paragraph'].field_body_.format,
+                              } %}
+                             <p>{{ body}}</p>
+                             {# {{ kint(var['#paragraph'].field_body_) }} #}
+                            </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

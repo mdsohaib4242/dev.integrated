@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="contact-us-mid">
+                <div class="contact-us-mid-top">
+                    <div class="row">
+                        {% for key,var in content.field_contact_middle_inner %}
+                        {% if key matches '/^\\d+$/' %}
+                        <div class="col-sm-3 col-6">
+                            <div id="contact-us-title{{ key }}" class="contact-us-title">
+                                <a href="javascript:void(0)">{{ var['#paragraph'].field_title_.0.value }}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {# <div class="col-sm-3 col-6">
+                            <div id="contact-us-title2" class="contact-us-title">
+                                <a href="javascript:void(0)">{{ content.field_contact_middle_inner.1['#paragraph'].field_title_.0.value }}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div id="contact-us-title3" class="contact-us-title">
+                                <a href="javascript:void(0)">{{ content.field_contact_middle_inner.2['#paragraph'].field_title_.0.value }}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div id="contact-us-title4" class="contact-us-title">
+                                <a href="javascript:void(0)">{{ content.field_contact_middle_inner.3['#paragraph'].field_title_.0.value }}</a>
+                            </div>
+                        </div> #}
+                    </div>
+                </div>
+                <div class="contact-us-mid-bottom">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {% for key,var in content.field_contact_middle_inner %}
+                            {% if key matches '/^\\d+$/' %}
+                            <div class="contact-us-mid-bottom-left" id="contact-us-content{{ key }}">
+                                <p>{{ var['#paragraph'].field_short_body.0.value }}</p>
+                                <div>
+                                    <span>Email:</span>
+                                    <p>{{ var['#paragraph'].field_email.0.value }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {# <div class="contact-us-mid-bottom-left" id="contact-us-content2">
+                                <p>{{ content.field_contact_middle_inner.1['#paragraph'].field_short_body.0.value }}</p>
+                                <div>
+                                    <span>Email:</span>
+                                    <p>{{ content.field_contact_middle_inner.1['#paragraph'].field_email.0.value }}</p>
+                                </div>
+                            </div>
+                            <div class="contact-us-mid-bottom-left" id="contact-us-content3">
+                                <p>{{ content.field_contact_middle_inner.2['#paragraph'].field_short_body.0.value }}</p>
+                                <div>
+                                    <span>Email:</span>
+                                    <p>{{ content.field_contact_middle_inner.2['#paragraph'].field_email.0.value }}</p>
+                                </div>
+                            </div>
+                            <div class="contact-us-mid-bottom-left" id="contact-us-content4">
+                                <p>{{ content.field_contact_middle_inner.3['#paragraph'].field_short_body.0.value }}</p>
+                                <div>
+                                    <span>Email:</span>
+                                    <p>{{ content.field_contact_middle_inner.3['#paragraph'].field_email.0.value }}</p>
+                                </div>
+                            </div> #}
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="contact-us-mid-bottom-right">
+                            {{ content.field_contact_middle_inner }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>

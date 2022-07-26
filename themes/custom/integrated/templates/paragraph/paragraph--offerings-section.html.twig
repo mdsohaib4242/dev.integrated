@@ -1,83 +1,101 @@
-<section class="offering">
-    <h4 class="topic-highlighter">Offerings</h4>
+{# <section class="offering">
+    <h4 class="topic-highlighter">{{ content.field_title_ }}</h4>
+    <div class="offering-content">
+        <div class="row">
+            {{ content.field_offering_inner_paragraph }}
+        </div>
+    </div>
+</section> #}
+
+<section class="offering" id="offerings">
+    <h4 class="topic-highlighter">{{ content.field_title_ }}</h4>
     <div class="offering-content">
     <div class="row">
         <div class="col-lg-6 mt-3">
-            <div class="offering-content-left" id="offering-content1">
-                <h5>Professional Translation</h5>
-                <p>High quality translations can never be achieved by using machine translation. Integrated Language Solutions works only with qualified and trained translators. We employ translators, editors and proofreaders who are native speakers of the target language and who are qualified within specific areas of specialization, which allows us to pick the most appropriate translator for each project.</p>
-                <p>It is a specific guarantee that effective quality assurance procedures, working environment, division of responsibility and quality audits are provided at all levels of the company.</p>
+            {% for key,var in content.field_offering_inner_paragraph %}
+            {% if key matches '/^\\d+$/' %}
+            <div class="offering-content-left" id="offering-content{{ key }}">
+                <h5>{{ var['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ var['#paragraph'].field_body.0.value }}</p>
             </div>
+            {% endif %}
+            {% endfor %}
 
-            <div class="offering-content-left" id="offering-content2">
-                <h5> Interpretation</h5>
-                <p>Integrated Language Solutions offers the highest level of interpretation services, both consecutive and simultaneous, combining highly-qualified interpreters with our own extensive industry experience. We offer many different language combinations and areas of expertise.</p>
+            {# <div class="offering-content-left" id="offering-content2">
+                <h5>{{ content.field_offering_inner_paragraph.1['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ content.field_offering_inner_paragraph.1['#paragraph'].field_body.0.value }}</p>
             </div>
 
             <div class="offering-content-left" id="offering-content3">
-                <h5> Localization</h5>
-                <p>Localization is the process of adapting products and services to a new location. This includes cultural, linguistic, legal and technical considerations and requires an in-depth knowledge of the local market.Our years of experience in localization gives your company an invaluable head start.</p>
+                <h5>{{ content.field_offering_inner_paragraph.2['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ content.field_offering_inner_paragraph.2['#paragraph'].field_body.0.value }}</p>
             </div>
 
             <div class="offering-content-left" id="offering-content4">
-                <h5> Staffing</h5>
-                <p>As a company owner, manager or recruiter, you want to focus on your customers and developing the product or service you offer. Searching through thousands of CVs and hunting for qualified language professionals can easily detract from your core business. This is where we can help..</p>
+                <h5>{{ content.field_offering_inner_paragraph.3['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ content.field_offering_inner_paragraph.3['#paragraph'].field_body.0.value }}</p>
             </div>
 
             <div class="offering-content-left" id="offering-content5">
-                <h5> Desktop Publishing</h5>
-                <p>How do you translate a witty catchphrase or slogan without losing its original meaning? How can you avoid some of the famous international branding mistakes of the past? And how can you retain your brand’s look and feel when it is being translated to a completely different language script?</p>
+                <h5>{{ content.field_offering_inner_paragraph.4['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ content.field_offering_inner_paragraph.4['#paragraph'].field_body.0.value }}</p>
             </div>
 
             <div class="offering-content-left" id="offering-content6">
-                <h5> Training</h5>
-                <p>With an increase in international business and a boom in outsourcing, there has been a great demand of foreign language training services in India. The augmentation in the demand for widening the scope of applications of some of the most popular IT products, there is a huge requirement of foreign language training</p>
-            </div>
+                <h5>{{ content.field_offering_inner_paragraph.5['#paragraph'].field_title_.0.value }}</h5>
+                <p>{{ content.field_offering_inner_paragraph.5['#paragraph'].field_body.0.value }}</p>
+            </div> #}
 
         </div>
         <div class="col-lg-6 mt-3">
             <div class="row h-100">
                 <div class="col-sm-6">
                     <div class="offering-img-wrap">
-                        <img src="img/service-3.png" class="img-fluid m-auto" id="offering-img1">
-                        <img src="img/our-firm.png" class="img-fluid m-auto" id="offering-img2">
-                        <img src="img/service-1.png" class="img-fluid m-auto" id="offering-img3">
-                        <img src="img/our-firm.png" class="img-fluid m-auto" id="offering-img4">
-                        <img src="img/service-3.png" class="img-fluid m-auto" id="offering-img5">
-                        <img src="img/service-1.png" class="img-fluid m-auto" id="offering-img6">
+                        {# <img src="{{ content.field_offering_inner_paragraph.0['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img1">
+                        <img src="{{ content.field_offering_inner_paragraph.1['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img2">
+                        <img src="{{ content.field_offering_inner_paragraph.2['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img3">
+                        <img src="{{ content.field_offering_inner_paragraph.3['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img4">
+                        <img src="{{ content.field_offering_inner_paragraph.4['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img6">
+                        <img src="{{ content.field_offering_inner_paragraph.5['#paragraph'].field_image.0.value }}" class="img-fluid m-auto" id="offering-img5"> #}
+                        {{ content.field_offering_inner_paragraph }}
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="h-100">
                         <table class="h-100 offering-title">
-                            <tr id="offering-title1">
-                                <th>01</th>
-                                <th> Professional Translation</th>
+                            {% for key,var in content.field_offering_inner_paragraph %}
+                            {% if key matches '/^\\d+$/' %}
+                            <tr id="offering-title{{ key }}">
+                                <th>0{{ key + 1 }}</th>
+                                <th> {{ var['#paragraph'].field_title_.0.value }}</th>
                             </tr>
-                            <tr id="offering-title2">
+                            {% endif %}
+                            {% endfor %}
+                            {# <tr id="offering-title2">
                                 <th>02</th>
-                                <th> Interpretation </th>
+                                <th>{{ content.field_offering_inner_paragraph.1['#paragraph'].field_title_.0.value }} </th>
                             </tr>
                             <tr id="offering-title3">
                                 <th>03</th>
-                                <th> Localization</th>
+                                <th>{{ content.field_offering_inner_paragraph.2['#paragraph'].field_title_.0.value }}</th>
                             </tr>
                             <tr id="offering-title4">
                                 <th>04</th>
-                                <th>Staffing</th>
+                                <th>{{ content.field_offering_inner_paragraph.3['#paragraph'].field_title_.0.value }}</th>
                             </tr>
                             <tr id="offering-title5">
                                 <th>05</th>
-                                <th> Desktop Publishing</th>
+                                <th>{{ content.field_offering_inner_paragraph.4['#paragraph'].field_title_.0.value }}</th>
                             </tr>
                              <tr id="offering-title6">
                                 <th>06</th>
-                                <th>Training </th>
-                            </tr>
+                                <th>{{ content.field_offering_inner_paragraph.5['#paragraph'].field_title_.0.value }}</th>
+                            </tr> #}
                          </table>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>

@@ -1,0 +1,15 @@
+
+<div class="item">
+    <div class="card-wrap">
+        <div class="card-image">
+            <img src="{{ fields.field_image.content|striptags}}" class="img-fluid">
+        </div>
+        <div class="card-content-shadow">
+            <div class="card-content">
+                <h5>{{ fields.title.content }}</h5>
+                <p>{{ fields.body.content|striptags|render|trim }}</p>
+                <a href="{{fields.view_node.content|striptags}}" class="card-btn">Discover</a>
+            </div>
+        </div>
+    </div>
+</div>
